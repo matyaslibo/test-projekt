@@ -34,3 +34,49 @@
     ```
 
 Hotovo! Projekt je publikován na GitHubu přes SSH.
+
+## Manuál pro publikaci projektu na GitHub pomocí SSH a Git
+
+1. **Ověření SSH připojení**
+    ```bash
+    ssh -T git@github.com
+    ```
+    Pokud je vše v pořádku, zobrazí se zpráva o úspěšném přihlášení.
+
+2. **Nastavení jména a emailu v Gitu**
+    ```bash
+    git config --global user.name "Vaše Jméno"
+    git config --global user.email "vas@email.com"
+    ```
+
+3. **Vytvoření nebo klonování repozitáře**
+    - Pro nový projekt:
+        ```bash
+        mkdir muj-projekt
+        cd muj-projekt
+        git init
+        ```
+    - Pro existující repozitář:
+        ```bash
+        git clone git@github.com:uzivatel/jmeno-repozitare.git
+        cd jmeno-repozitare
+        ```
+
+4. **Práce s Git**
+    - Přidání změn:
+        ```bash
+        git add .
+        ```
+    - Commit změn:
+        ```bash
+        git commit -m "Popis změny"
+        ```
+    - Push na GitHub:
+        ```bash
+        git push origin main
+        ```
+
+5. **Kontrola na GitHubu**
+    - Otevřete repozitář na GitHubu a ověřte, že změny byly úspěšně publikovány.
+
+Tímto je projekt publikován a spravován pomocí SSH a Git.
