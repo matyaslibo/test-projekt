@@ -4,16 +4,21 @@
 # Vygeneruje commit message podle systemoveho casu
 
 REPO_DIR="$(dirname "$0")"
-cd "$REPO_DIR" || exit 1
 
-# Pridani vsech zmen
-git add .
+while true; do
+    cd "$REPO_DIR" || exit 1
 
-# Vygenerovani commit message
-COMMIT_MSG="Push: $(date '+%Y-%m-%d %H:%M:%S')"
+    # Pridani vsech zmen
+    git add .
 
-# Commit
-git commit -m "$COMMIT_MSG"
+    # Vygenerovani commit message
+    COMMIT_MSG="Push: $(date '+%Y-%m-%d %H:%M:%S')"
 
-# Push na GitHub pres SSH
-git push origin main
+    # Commit
+    git commit -m "$COMMIT_MSG"
+
+    # Push na GitHub pres SSH
+    git push origin main
+
+    sleep 300 # 5 minut
+done
