@@ -80,3 +80,51 @@ Hotovo! Projekt je publikován na GitHubu přes SSH.
     - Otevřete repozitář na GitHubu a ověřte, že změny byly úspěšně publikovány.
 
 Tímto je projekt publikován a spravován pomocí SSH a Git.
+
+## Manuál pro instalaci `cron` a nastavení spuštění skriptu každých 5 minut
+
+1. **Instalace `cron` (pokud není nainstalován)**
+    ```bash
+    sudo apt update
+    sudo apt install cron
+    ```
+
+2. **Ujistěte se, že služba `cron` běží**
+    ```bash
+    sudo systemctl enable cron
+    sudo systemctl start cron
+    ```
+
+3. **Nastavení pravidelného spuštění skriptu**
+    - Otevřete crontab pro úpravu:
+        ```bash
+        crontab -e
+        ```
+    - Přidejte řádek pro spuštění skriptu každých 5 minut (nahraďte `/cesta/ke/script.sh` skutečnou cestou):
+        ```
+        */5 * * * * /cesta/ke/script.sh
+        ```
+
+4. **Uložte a zavřete crontab**
+
+Skript se nyní bude automaticky spouštět každých 5 minut.
+
+## Manuál pro sledování logů pomocí `syslog` a `tail`
+
+1. **Zajištění dostupnosti syslog**
+    - Na většině distribucí Linuxu je syslog již nainstalován a běží jako součást služby (např. `rsyslog`).
+
+2. **Sledování logů v reálném čase**
+    - Pro sledování systémových logů použijte příkaz:
+        ```bash
+        tail -f /var/log/syslog
+        ```
+    - Tento příkaz zobrazí nové řádky v logu, jakmile jsou přidány.
+
+3. **Použití filtru (volitelné)**
+    - Pro zobrazení pouze relevantních řádků můžete použít `grep`:
+        ```bash
+        tail -f /var/log/syslog | grep "název_skriptu"
+        ```
+
+Tímto způsobem můžete monitorovat systémové události a výstupy skriptů v reálném čase.
